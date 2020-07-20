@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Food Calculator</title>
+  </head>
+  <body>
+    <div id="container">
+    <!-- CALCULATOR start -->
+    <h1>Счетчик стоимости блюд</h1>
+        <div id="calculator">
+          <form>
+            <p>Какой размер порции вы предпочитаете?</p>
+              <div class="radio_buttons_container" id="size">
+                <input type="radio" name="size" id="small" value="small" checked>Маленький (300р, 250 калорий)<br>
+                <input type="radio" name="size" id="large" value="large" checked>Большой (380р, 400 калорий)<br>
+              </div>
+            <br>
+            <p>Какой вид соуса и топпинга?</p>
+              <select class="select_container" id="type">
+                <option selected>Выбери...</option>
+                <option value="pig" id="pig">Терияки и свинина(+  60р, + 100 калорий)</option>
+                <option value="meet" id="meet">Унаги и говядина(+ 80р, + 150 калорий)</option>
+                <option value="chicken" id="chicken">Устричный и курица(+ 40р, + 80 калорий)</option>
+              </select>
+            <br><br>
+            <p>Может дополнительно что-нибудь желаете?</p>
+              <div class="add_checkbox_container" id="add">
+                <input type="checkbox" name="add" id="bread_crumbs" value="bread_crumbs">Посыпать сухариками (+ 15р, 10 калорий)<br>
+                <input type="checkbox" name="add" id="extra_sause" value="extra_sause">Полить доп. соусом (+ 20р, + 5 калорий)<br>      
+              </div>
+        
+              <button type="button" id="calculate">Подсчитать</button>
+          </form>
+        </div>       
+    <!-- CALCULATOR end -->
+    <!-- TIPS start -->
+        <div id="total">
+          <span id="pay1">0</span>
+          <sub>Руб.</sub><br>
+          <span id="pay2">0</span>
+          <sub >Калорий</sub>
+        </div>
+    <!-- TIPS end -->
+    </div>      
+
+    <script src="app.js"></script>
+  </body>
+</html>
