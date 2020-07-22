@@ -1,80 +1,54 @@
-var input = document.querySelector("input[type='text']");
-var ul = document.querySelector("ul");
-var container = document.querySelector("div");
-var lists = document.querySelectorAll("li");
-var spans = document.getElementsByTagName("span");
-var pencil = document.querySelector("#pencil");
-var saveBtn = document.querySelector(".save");
-var clearBtn = document.querySelector(".clear");
-var lists = document.querySelectorAll("li");
-var tipsBtn = document.querySelector(".tipBtn");
-var closeBtn = document.querySelector(".closebtn");
-var overlay = document.getElementById("overlay");
+import { keypress, ul_checked, pencil_show_hide, save_todo, clear_todo, tips, close } from "./clickers.js";
+import { cat_facts } from "./cat_facts.js";
 
-// Delete todo if delete span clicked
-function deleteTodo() {
-    for(let span of spans) {
-        span.addEventListener("click", function() {
-            console.log(span.parentElement);
-            span.parentElement.remove();
-        });
+// Document ready
+$(document).ready(() => {
+  var spans = document.getElementsByTagName("span");
+  var ul = document.querySelector("ul");
+  var ul_cat_facts = document.querySelector('.cat-facts');
+
+  // Initialize event listeners
+  keypress(deleteTodo);
+  ul_checked();
+  pencil_show_hide();
+  save_todo();
+  clear_todo();
+  tips();
+  close();
+
+  // Load cat facts data
+  cat_facts("https://cat-fact.herokuapp.com/facts/random?animal_type&amount=20")
+    .done(data => {
+      console.log(data);
+      setFactsData(data);
+    })
+    .fail(err => {
+      console.log(err);
+    })
+
+  // Delete todo if delete span clicked
+  function deleteTodo() {
+    for (let span of spans) {
+      span.addEventListener("click", function () {
+        console.log(span.parentElement);
+        span.parentElement.remove();
+      });
     }
-}
+  }
 
-function loadTodos() {
-    console.log(localStorage.getItem("todoList"));
+  function loadTodos() {
     if (localStorage.getItem("todoList")) {
-        ul.innerHTML = localStorage.getItem("todoList");
+      ul.innerHTML = localStorage.getItem("todoList");
     }
-}
+  }
 
-// Add todo element to todo list
-input.addEventListener("keypress", function(key) {
-    if (key.which === 13) {
-        var li = document.createElement("li");
-        var spanElement = document.createElement("span");
-        var icon = document.createElement("i");
+  function setFactsData(cat_facts) {
+    cat_facts.map(elem => {
+      ul_cat_facts.append(document.createElement('li'), elem.text)
+    })
+    console.log(ul_cat_facts);
+  }
 
-        var newTodo = this.value;
-        this.value = "";
-
-        icon.classList.add("fas", "fa-trash-alt");
-        console.log(icon.classList);
-        spanElement.append(icon);
-        ul.appendChild(li).append(spanElement, newTodo);
-
-        deleteTodo();
-    }
+  loadTodos();
+  deleteTodo(); 
 });
-
-pencil.addEventListener("click", function() {
-    input.classList.toggle("display");
-});
-
-ul.addEventListener("click", function(e) {
-    if (e.target.tagName === "LI");
-    e.target.classList.toggle("checked");
-});
-
-tipsBtn.addEventListener("click", function() {
-    overlay.style.height = "100%";
-});
-
-closeBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    overlay.style.height = "0";
-});
-
-// Clear all todos on click Clear button
-clearBtn.addEventListener("click", function() {
-    ul.innerHTML = "";
-});
-
-saveBtn.addEventListener("click", function() {
-    localStorage.setItem("todoList", ul.innerHTML);
-    console.log(localStorage);
-});
-
-deleteTodos();
-
-loadTodos();

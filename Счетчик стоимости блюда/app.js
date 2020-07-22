@@ -74,3 +74,5 @@ document.getElementById('form').addEventListener('submit', (e) => {
     e.preventDefault();
     ChinaBox.calculate(document.querySelector('input[name="size"]:checked').value)
 }); 
+
+calculate();
