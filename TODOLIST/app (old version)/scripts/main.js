@@ -43,7 +43,7 @@ input.addEventListener("keypress", function(key) {
         spanElement.append(icon);
         ul.appendChild(li).append(spanElement, newTodo);
 
-        deleteTodo();
+        deleteTodos();
     }
 });
 

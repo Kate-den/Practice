@@ -70,9 +70,9 @@ var ChinaBox = {
     }
 };
 
-document.getElementById('form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    ChinaBox.calculate(document.querySelector('input[name="size"]:checked').value)
-}); 
 
-calculate();
+document.getElementById('form').addEventListener("submit", (event) => {
+    event.preventDefault();
+    ChinaBox.calculate(document.querySelector('input[name="size"]:checked').value)
+    calculate();
+})

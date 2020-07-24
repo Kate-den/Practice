@@ -1,6 +1,6 @@
 body{
     min-height:100%;
-    font-family: Bad Script;
+    font-family: Segoe Script;
     background: #f5ff99;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #ffdda9, #f5ff99);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #ffdda9, #f5ff99); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -8,6 +8,7 @@ body{
   
 h1{
     text-transform: uppercase;
+    font-family: Bad Script;
     background: #ab86e7;
     color:white;
     margin: 0;
@@ -72,7 +73,7 @@ button:hover {
 #buttons{
     display:inline-block;
     text-align:center;
-    margin-left:22%;
+    margin-left:13%;
     position:absolute;
     bottom:5px;
 }
@@ -90,7 +91,7 @@ button:hover {
     -moz-border-radius: 20px;
 }
 
-#overlay{
+.overlay{
     height: 0;
     width: 100%;
     position: fixed; 
@@ -103,7 +104,7 @@ button:hover {
     transition: 0.5s; 
     -webkit-transition:  0.5s;
 }
-#overlay .closebtn {
+.overlay .closebtn {
     position: absolute;
     top: 15px;
     right: 40px;
@@ -111,11 +112,13 @@ button:hover {
     color:#86a8e7;
     cursor: pointer;
 }
-#overlay li{
+.overlay li{
     padding: 8px;
+    font-family: Romantic;
+    width: 95%;
     list-style-type:circle;
-    font-size: 30px;
-    color: #818181;
+    font-size: 25px;
+    color: #9e9e9e;
     display: block;
 }
 
